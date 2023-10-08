@@ -5,10 +5,10 @@ int main(void)
 size_t n = 1;
 char *exe[2],*buff = NULL;
 pid_t child;
-int status, i = 1;
+int status;
 ssize_t llen;
 
-while (i)
+while (1)
 {
 printf("$ ");
 llen = getline(&buff, &n, stdin);
@@ -27,8 +27,6 @@ exe[0] = strdup(buff);
             continue;
         }
 exe[1] = NULL;
-
-if (strncmp(buff, "exit", 4) != 0)
 {
 	child = fork();
 	if (child == -1)
@@ -41,9 +39,9 @@ if (strncmp(buff, "exit", 4) != 0)
 	{
 
 			if (execve(exe[0], exe, NULL) == -1)
-			{
+		{
 				perror("Error");
-			}
+		}
 	}
 	else
         {
@@ -51,9 +49,8 @@ if (strncmp(buff, "exit", 4) != 0)
 			free(exe[0]);
 			free(buff);
 	}
+
 }
-else
-break;
 }
 return (0);
 }
