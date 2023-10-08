@@ -1,3 +1,5 @@
+![AZUG (1)](https://github.com/Mourad-Azouga/simple_shell/assets/130150919/b80006c6-964d-44df-99dd-131ef69d4037)
+
 # PROJECT AZUG - Simple shell for ALX SE projects
 
 ## Table of Contents
