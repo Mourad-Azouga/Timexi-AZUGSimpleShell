@@ -1,6 +1,6 @@
-![AZUG (1)](https://github.com/Mourad-Azouga/simple_shell/assets/130150919/b80006c6-964d-44df-99dd-131ef69d4037)
-
+![AZUG__1_-removebg-preview](https://github.com/Mourad-Azouga/simple_shell/assets/130150919/956af586-2f4b-42ad-bbf5-34370625ae27)
 # PROJECT AZUG - Simple shell for ALX SE projects
+
 
 ## Table of Contents
 
