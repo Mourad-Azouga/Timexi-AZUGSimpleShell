@@ -20,9 +20,6 @@
 - Requirements
 - Usage
 - Compilation
-- Testing
-- Allowed Functions and System Calls
-- Authors
 
 ---
 
