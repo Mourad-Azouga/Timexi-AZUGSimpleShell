@@ -1,6 +1,6 @@
 # Changelog
 
-## [2023-10-06]
+## [2023-10-06] MOURAD-AZOUGA
 
 ### Added
 The repo.
@@ -14,7 +14,7 @@ Made Stephanie contributor
 
 ### Removed
 
-## [2023-10-09]
+## [2023-10-07] MOURAD-AZOUGA
 
 ### Added
 CHANGELOG.md AUTHORS.md README.md shell.h
@@ -26,7 +26,7 @@ CHANGELOG.md AUTHORS.md README.md shell.h
 
 
 ### Removed
-## [2023-10-10]
+## [2023-10-08] MOURAD-AZOUGA
 
 ### Added
 -First version of the shell, basic stuff with exit.
@@ -39,3 +39,26 @@ Some issues with the first version of the shell
 
 ### Removed
 exit function, will be re added tomorow
+
+## [2023-10-08] MOURAD-AZOUGA
+
+### Added
+Test suit and fully interpeted, how to use is in the README file.
+
+### Updated
+shell.c with signal handeling code.
+
+### Fixed
+Memory leaks when the the input is incorrect.
+
+### Removed
+
+## [2023-10-XX]
+
+### Added
+
+### Updated
+
+### Fixed
+
+### Removed

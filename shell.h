@@ -8,5 +8,5 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #define _GNU_SOURCE
-
+#include <signal.h>
 #endif /*SHELL_H*/

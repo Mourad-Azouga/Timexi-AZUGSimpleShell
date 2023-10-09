@@ -1,5 +1,9 @@
 #include "shell.h"
-
+void sigint_handler(int signum)
+{
+    (void)signum;
+    exit(0);
+}
 int main(void)
 {
 size_t n = 1;
@@ -7,7 +11,7 @@ char *exe[2],*buff = NULL;
 pid_t child;
 int status;
 ssize_t llen;
-
+signal(SIGINT, sigint_handler);
 while (1)
 {
 printf("$ ");
@@ -41,13 +45,17 @@ exe[1] = NULL;
 			if (execve(exe[0], exe, NULL) == -1)
 		{
 				perror("Error");
+				exit(EXIT_FAILURE);
 		}
 	}
 	else
         {
 			waitpid(child, &status, 0);
 			free(exe[0]);
-			free(buff);
+			if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+		{
+		free(buff);
+		}
 	}
 
 }
