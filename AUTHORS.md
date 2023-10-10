@@ -7,9 +7,10 @@
   - Contributions: Created functions, tested the code, all the good stuff.
 
 ## Project co-lead
-- [Contributor 1](https://github.com/contributor-1)
-  - GitHub: [@contributor-1](https://github.com/contributor-1)
-  - Contributions: Describe the significant contributions made by this contributor.
+- [StephanSerwaa](https://github.com/StephanSerwaa)
+  - GitHub: [@StephanSerwaa](https://github.com/StephanSerwaa)
+  -Twitter: [@StephanieSerwaa] (https://twitter.com/StephanieSerwaa)
+  - Contributions: Worked together with my co-team member to get all tasks done.
 
 
 
