@@ -26,6 +26,7 @@ CHANGELOG.md AUTHORS.md README.md shell.h
 
 
 ### Removed
+
 ## [2023-10-08] MOURAD-AZOUGA
 
 ### Added
@@ -38,7 +39,7 @@ Added logo and ASCII art to the README.md
 Some issues with the first version of the shell
 
 ### Removed
-exit function, will be re added tomorow
+exit function, will be re added tomorrow
 
 ## [2023-10-08] MOURAD-AZOUGA
 
@@ -53,12 +54,16 @@ Memory leaks when the the input is incorrect.
 
 ### Removed
 
-## [2023-10-XX]
+## [2023-10-10] StephanSerwaa
 
 ### Added
+a.out
 
 ### Updated
+AUTHORS.md
+CHANGELOG.md
 
 ### Fixed
 
 ### Removed
+shell

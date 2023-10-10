@@ -1,9 +1,0 @@
-#ifndef shell.h
-#define shell.h
-
-/*All protypes
-*/
-void run_shell(void);
-
-#endif /* Shell.h 
-*/

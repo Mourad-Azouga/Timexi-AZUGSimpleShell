@@ -1,0 +1,27 @@
+#include <shell.h>
+
+void readChangelog()
+{
+    FILE *changelogFile;
+    char line[256]; // Adjust the buffer size as needed
+
+changelogFile = fopen("CHANGELOG.md", "r")
+if (changelogFile == NULL}
+{
+   perror("Error opening CHANGELOG.md");
+        return;
+}
+
+while (fgets(line, sizeof(line), changelogFile) != NULL)
+{
+       // Process each line as needed, e.g., print it
+       printf("%",line);
+}
+   fclose(changelogFile);
+}
+
+int main (shell.h)
+{
+    readChangelog();
+    return 0;
+}
