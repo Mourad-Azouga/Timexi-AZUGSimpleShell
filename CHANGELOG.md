@@ -71,7 +71,7 @@ shell
 ## [2023-10-11] MOURAD AZOUGA
 
 ### Added
-
+EOF handle and SIGINT handle
 ### Updated
 shell.c to a new version, please be careful when changing it
 ### Fixed

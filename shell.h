@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #define _GNU_SOURCE
 #include <signal.h>
+#include <errno.h>
 extern char **environ;
 
 #endif /*SHELL_H*/

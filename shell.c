@@ -1,26 +1,41 @@
 #include "shell.h"
+char *input = NULL, *argv[5];
+void sigint_handler(int signum)
+{
+	int i = 0;
+	if (signum == SIGINT)
+	{
+		free(input);
+		                for (i = 0; argv[i] != NULL; i++)
+                {
+                free(argv[i]);
+                }
+    exit(EXIT_SUCCESS);
+}
+}
 /**
  * main - main program
  */
 void execute(char **exe);
-
 int main(void)
 {
-char *input = NULL, *tknptr, *argv[5];
+char *tknptr;
 size_t n = 0;
 ssize_t gtln;
 int i = 0, status = 0, j = 0;
 pid_t child;
+
+signal(SIGINT, sigint_handler);
 while (1)
 {
 if (isatty(STDIN_FILENO))
 	{
 		write(STDOUT_FILENO, "$ ", 2);
+	}
 		gtln = getline(&input, &n, stdin);
 			if (gtln == -1)
 			{
-				perror("getline");
-				exit(EXIT_FAILURE);
+				break;
 			}
 		if (gtln > 0 && input[gtln - 1] == '\n')
 			{
@@ -60,10 +75,7 @@ if (isatty(STDIN_FILENO))
 		i = 0;
 
 	}
-else
-	{
-	}
-}
+free(input);
 return (0);
 }
 /**
@@ -71,9 +83,15 @@ return (0);
  */
 void execute(char **exe)
 {
+	int i = 0;
 	if (execve(exe[0], exe, environ) == -1)
 	{
 		perror(exe[0]);
+		for (i = 0; exe[i] != NULL; i++)
+		{
+		free(exe[i]);
+		}
 		exit(EXIT_FAILURE);
 	}
 }
+
