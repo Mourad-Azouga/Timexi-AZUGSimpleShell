@@ -67,3 +67,25 @@ CHANGELOG.md
 
 ### Removed
 shell
+
+## [2023-10-11] MOURAD AZOUGA
+
+### Added
+
+### Updated
+shell.c to a new version, please be careful when changing it
+### Fixed
+shell.c shell.h changelog
+### Removed
+old shell.c couple of swp and swo files
+
+
+## [2023-10-10] MOURAD AZOUGA
+
+### Added
+
+### Updated
+
+### Fixed
+
+### Removed
