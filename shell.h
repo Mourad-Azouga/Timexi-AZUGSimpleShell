@@ -12,4 +12,11 @@
 #include <errno.h>
 extern char **environ;
 
+/*SHELL.C*/
+void execute(char **exe);
+void sigint_handler(int signum);
+void execute(char **exe);
+
+/*PATHFINDER.C*/
+char *pathfinder(char *input);
 #endif /*SHELL_H*/

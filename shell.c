@@ -1,28 +1,28 @@
 #include "shell.h"
-char *input = NULL, *argv[5];
+char *input = NULL;
+/**
+ * sigint_handler - hanldes signal inputs
+ * @signum: signal number
+ */
 void sigint_handler(int signum)
 {
-	int i = 0;
 	if (signum == SIGINT)
 	{
 		free(input);
-		                for (i = 0; argv[i] != NULL; i++)
-                {
-                free(argv[i]);
-                }
-    exit(EXIT_SUCCESS);
+		exit(EXIT_SUCCESS);
+	}
 }
-}
+
 /**
  * main - main program
+ * Return: 1 0
  */
-void execute(char **exe);
 int main(void)
 {
-char *tknptr;
+char *tknptr, *argv[5], *full_path = NULL;
 size_t n = 0;
 ssize_t gtln;
-int i = 0, status = 0, j = 0;
+int i = 0, status = 0, j = 0, k = 0;
 pid_t child;
 
 signal(SIGINT, sigint_handler);
@@ -49,7 +49,15 @@ if (isatty(STDIN_FILENO))
 				i++;
 			}
 		argv[i] = NULL;
-		if (i > 0)
+		full_path = pathfinder(argv[0]);
+		if (full_path != NULL)
+		{
+			argv[0] = NULL;
+			argv[0] = strdup(full_path);
+			full_path = NULL;
+			free(full_path);
+		}
+		if (access(argv[0], X_OK) == 0)
 		{
 		child = fork();
 		if (child == -1)
@@ -65,10 +73,14 @@ if (isatty(STDIN_FILENO))
 			}
 			else
 			{
-				waitpid(child, &status, 0);
+				waitpid(child, &status, WUNTRACED);
 			}
 		}
-		for (j = 0; j <= i; j++)
+		else
+			{
+				perror(full_path);
+			}
+		for (j = 0; argv[j] != NULL; j++)
 		{
 			argv[j] = NULL;
 		}
@@ -76,10 +88,15 @@ if (isatty(STDIN_FILENO))
 
 	}
 free(input);
+for (k = 0; argv[k] != NULL; i++)
+	{
+	free(argv[k]);
+	}
 return (0);
 }
 /**
  * execute - executes the argv from main
+ * @exe: the executable command
  */
 void execute(char **exe)
 {
