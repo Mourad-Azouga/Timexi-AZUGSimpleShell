@@ -1,6 +1,6 @@
 #include "shell.h"
 
-char *input = NULL;
+char *input = NULL, *full = NULL;
 
 /**
  * pathfinder - a Nissan 4x4 truck, joking it looks for the path
@@ -12,7 +12,13 @@ char *pathfinder(char *input)
     char *path_env = getenv("PATH");
     char *path_copy = strdup(path_env);
     char *path_dir = NULL;
-    char *full_path = NULL, *full_path_copy = NULL;
+    char *full_path = malloc(PATH_MAX);
+            if (full_path == NULL)
+        {
+            perror("malloc fullpath error");
+            exit(EXIT_FAILURE);
+        }
+
 
     if (path_copy == NULL)
     {
@@ -23,12 +29,6 @@ char *pathfinder(char *input)
     path_dir = strtok(path_copy, ":");
     while (path_dir)
     {
-        full_path = malloc(strlen(path_dir) + strlen(input) + 2);
-        if (full_path == NULL)
-        {
-            perror("malloc fullpath error");
-            exit(EXIT_FAILURE);
-        }
 
         full_path[0] = '\0';
         strcpy(full_path, path_dir);
@@ -37,17 +37,15 @@ char *pathfinder(char *input)
 
         if (access(full_path, F_OK) == 0)
         {
+	full = strdup(full_path);
             free(path_copy);
-            full_path_copy = full_path;
-            full_path = NULL;
-            return (full_path_copy);
+	    free(full_path);
+	    return (full);
         }
 
-        free(full_path);
-        full_path = NULL;
         path_dir = strtok(NULL, ":");
     }
-
+	free(full_path);
     free(path_copy);
     return (NULL);
 }
@@ -73,6 +71,7 @@ if (isatty(STDIN_FILENO))
 		gtln = getline(&input, &n, stdin);
 			if (gtln == -1)
 			{
+				argv[0] = NULL;
 				break;
 			}
 		if (gtln > 0 && input[gtln - 1] == '\n')
@@ -91,9 +90,10 @@ if (isatty(STDIN_FILENO))
 		if (full_path != NULL)
 		{
 			argv[0] = NULL;
+			free(argv[0]);
 			argv[0] = strdup(full_path);
 			full_path = NULL;
-			free(full_path);
+			free(full);
 		}
 		child = fork();
 		if (child == -1)
@@ -113,16 +113,20 @@ if (isatty(STDIN_FILENO))
 			}
 		for (j = 0; argv[j] != NULL; j++)
 		{
+			if (argv[j] != input)
+			{
+				free(argv[j]);
+			}
 			argv[j] = NULL;
 		}
 		i = 0;
-
-	}
-free(input);
+}
+free(full_path);
 for (k = 0; argv[k] != NULL; i++)
 	{
 	free(argv[k]);
 	}
+free(input);
 return (EXIT_SUCCESS);
 }
 /**

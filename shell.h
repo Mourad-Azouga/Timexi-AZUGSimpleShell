@@ -11,6 +11,8 @@
 #include <signal.h>
 #include <errno.h>
 extern char **environ;
+#include <limits.h>
+
 
 /*SHELL.C*/
 void execute(char **exe);
