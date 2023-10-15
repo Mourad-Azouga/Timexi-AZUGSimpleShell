@@ -1,0 +1,19 @@
+#include "shell.h"
+
+size_c my_strlen(const char *str) 
+{
+    size_t length = 0;
+    while (str[length] != '\0') 
+    {
+        length++;
+    }
+    return length;
+}
+
+int main(shell)
+{
+    const char *myString = "Hello, World!";
+    size_t length = my_strlen(myString);
+    printf("Length of the string: %zu\n", length);
+    return 0;
+}

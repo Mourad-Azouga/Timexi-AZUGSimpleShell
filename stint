@@ -1,0 +1,10 @@
+#include "shell.h"
+
+int at_str_toi(char str)
+{
+    const char *str = "123";
+    int inte_value = atoi(str);
+    printf("The integer value is: %d\n'
+    integer_value);
+    return 0;
+}
