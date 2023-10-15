@@ -69,11 +69,16 @@ if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "$ ", 2);
 	}
 		gtln = getline(&input, &n, stdin);
-			if (gtln == -1)
+		if (gtln == -1 || strcmp(input, "exit\n") == 0)
 			{
 				argv[0] = NULL;
 				break;
 			}
+		if (strcmp(input, "env\n") == 0)
+		{
+			print_env();
+			continue;
+		}
 		if (gtln > 0 && input[gtln - 1] == '\n')
 			{
 				input[gtln - 1] = '\0';
@@ -89,8 +94,11 @@ if (isatty(STDIN_FILENO))
 		full_path = pathfinder(argv[0]);
 		if (full_path != NULL)
 		{
-			argv[0] = NULL;
-			free(argv[0]);
+			for ( i = 0; argv[i] != NULL; i++)
+			{
+			argv[i] = NULL;
+			free(argv[i]);
+			}
 			argv[0] = strdup(full_path);
 			full_path = NULL;
 			free(full);
@@ -145,5 +153,17 @@ void execute(char **exe)
 		}
 		exit(EXIT_FAILURE);
 	}
+}
+/**
+ * print_env - prints env after the condition
+ */
+void print_env(void)
+{
+	    char **env = environ;
+
+    while (*env != NULL) {
+        puts(*env);
+        env++;
+    }
 }
 

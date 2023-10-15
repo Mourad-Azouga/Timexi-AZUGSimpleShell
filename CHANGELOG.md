@@ -80,6 +80,28 @@ shell.c shell.h changelog
 old shell.c couple of swp and swo files
 
 
+## [2023-10-14] MOURAD AZOUGA
+
+### Added
+
+### Updated
+shell.c
+### Fixed
+All memory leaks
+### Removed
+pathfinder.c
+
+## [2023-10-15] MOURAD AZOUGA
+### Added
+exit condition added to EOF
+env condition and print_env function
+### Updated
+shell.c
+### Fixed
+
+### Removed
+
+
 ## [2023-10-10] MOURAD AZOUGA
 
 ### Added
