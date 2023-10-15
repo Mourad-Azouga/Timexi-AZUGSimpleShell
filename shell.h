@@ -11,5 +11,12 @@
 #include <signal.h>
 #include <errno.h>
 extern char **environ;
+#include <limits.h>
 
+
+/*SHELL.C*/
+void execute(char **exe);
+void sigint_handler(int signum);
+char *pathfinder(char *input);
+void print_env(void);
 #endif /*SHELL_H*/
