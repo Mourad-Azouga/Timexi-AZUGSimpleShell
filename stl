@@ -1,0 +1,168 @@
+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
+ https://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.github.com/StephanSerwaa/alx-pre_course.git
+https://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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
+Cloning into 'alx-pre_course'...
+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
+$ ./1-alphabet
+abcdefghijklmnopqrstuvwxyz
+$
+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
+
+$ ./2-print_alphabet_x10
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+$ gcc _putchar.c 4-main.c 4-isalpha.c -o 4-isalpha
+$ ./4-isalpha
+1110
+$
+$ gcc _putchar.c 6-main.c 6-abs.c -o 6-abs
+$ ./6-abs
+1
+0
+1
+98
+$
+
+$ gcc _putchar.c 8-main.c 8-24_hours.c -o 8-24
+$ ./8-24 | head
+00:00
+00:01
+00:02
+00:03
+00:04
+00:05
+00:06
+00:07
+00:08
+00:09
+$ ./8-24 | tail
+23$ ./8-24 | wc -l
+1440
+
+
+$ 
+
+$ gcc _putchar.c 7-main.c 7-print_last_digit.c -o 7-last_digit
+$ ./7-last_digit
+8044
+$
+
+
+
+README.md
+
+0x02. C - Functions, nested loops
+
+
+0-putchar.c
+
+#include "main.h"
+/**
+ * main - print _putchar
+ * is written by mbah
+ * Return: 0
+ */
+
+int main(void)
+{
+_putchar('_');
+_putchar('p');
+_putchar('u');
+_putchar('t');
+_putchar('c');
+_putchar('h');
+_putchar('a');
+_putchar('r');
+_putchar('\n');
+return (0);
+}
+
+
+1-alphabet.c
+
+#include "main.h"
+
+/**
+ * print_alphabet - print all alphabet in lowercase
+ */
+
+void print_alphabet(void)
+{
+	char letter;
+
+	for (letter = 'a'; letter <= 'z'; letter++)
+		_putchar(letter);
+
+	_putchar('\n');
+}
+
+
+
+2-print_alphabet_x10.c
+
+#include "main.h"
+
+/**
+ * print_alphabet_x10 - prints 10 times the alphabet, in lowercase,
+ * followed by a new line
+ */
+void print_alphabet_x10(void)
+{
+	char ch;
+	int i;
+
+	i = 0;
+
+	while (i < 10)
+	{
+		ch = 'a';
+		while (ch <= 'z')
+		{
+			_putchar(ch);
+			ch++;
+		}
+		_putchar('\n');
+		i++;
+	}
+}
+
+
+3-islower.c
+
+#include "main.h"
+
+/**
+ * _islower - check if char is lowercase
+ * @c: is the char to be checked
+ * Return: 1 if char is lowercase, otherwise 0.
+ */
+
+int _islower(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	else
+		return (0);
+}
+	
+
+
+4-isalpha.c
+
+#include "main.h"
+
+/**
+ * _isalpha - checks for alphabetic character
+ * @c: the character to be checked
+ * Return: 1 if c is a letter, 0 otherwise
+ */
+int _isalpha(int c)
+{
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+}
