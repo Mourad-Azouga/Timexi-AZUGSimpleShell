@@ -19,7 +19,14 @@ extern char **environ;
 void execute(char **exe);
 char *pathfinder(char *input);
 
+/*STRING.c*/
+int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, const char *src);
+int _strcmp(char *s1, char *s2);
 
 /*PRINT.C*/
 void print_env(void);
+int _putchar(int c);
+void _puts(char *str);
 #endif /*SHELL_H*/

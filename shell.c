@@ -12,7 +12,7 @@ char *pathfinder(char *input)
     char *path_env = getenv("PATH");
     char *path_copy = strdup(path_env);
     char *path_dir = NULL;
-    char *full_path = malloc(PATH_MAX);
+    char *full_path = malloc(_strlen(input) + 20);
     if (full_path == NULL)
         {
             perror("malloc fullpath error");
@@ -30,16 +30,17 @@ char *pathfinder(char *input)
     while (path_dir)
     {
         full_path[0] = '\0';
-        strcpy(full_path, path_dir);
-        strcat(full_path, "/");
-        strcat(full_path, input);
+        _strcpy(full_path, path_dir);
+        _strcat(full_path, "/");
+        _strcat(full_path, input);
 
         if (access(full_path, F_OK) == 0)
-        {
-        full = strdup(full_path);
+	{
+	    full = strdup(full_path);
             free(path_copy);
             free(full_path);
             return (full);
+
         }
 
         path_dir = strtok(NULL, ":");
@@ -68,12 +69,12 @@ if (isatty(STDIN_FILENO))
                 write(STDOUT_FILENO, "$ ", 2);
         }
                 gtln = getline(&input, &n, stdin);
-                if (gtln == -1 || strcmp(input, "exit\n") == 0)
+                if (gtln == -1 || _strcmp(input, "exit\n") == 0)
                         {
                                 argv[0] = NULL;
                                 break;
                         }
-                if (strcmp(input, "env\n") == 0)
+                if (_strcmp(input, "env\n") == 0)
                 {
                         print_env();
                         continue;
@@ -91,17 +92,18 @@ if (isatty(STDIN_FILENO))
                                 i++;
                         }
                 argv[i] = NULL;
-                if (argv[0] == NULL || strcmp(argv[0], "\t") == 0)
+                if (argv[0] == NULL || _strcmp(argv[0], "\t") == 0)
                 {
                         continue;
                 }
                 full_path = pathfinder(argv[0]);
                 if (full_path != NULL)
 		{
+			argv[0] = NULL;
 			argv[0] = strdup(full_path);
 			full_path = NULL;
-                        free(full);
-                }
+			free(full);
+		}
                 child = fork();
                 if (child == -1)
                 {
@@ -112,21 +114,18 @@ if (isatty(STDIN_FILENO))
                         if (child == 0)
                         {
                         execute(argv);
-                        exit(0);
+			exit(0);
                         }
                         else
                         {
                                 waitpid(child, &status, WUNTRACED);
-                        }
+			}
                 for (j = 0; argv[j] != NULL; j++)
                 {
                         argv[j] = NULL;
                 }
                 i = 0;
 }
-free(full_path);
-free(argv[0]);
-free(argv[1]);
 for (k = 0; argv[k] != NULL; i++)
         {
         free(&argv[k]);
