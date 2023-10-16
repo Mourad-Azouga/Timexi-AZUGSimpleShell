@@ -10,7 +10,7 @@ char *input = "", *full = NULL;
 char *pathfinder(char *input)
 {
     char *path_env = getenv("PATH");
-    char *path_copy = strdup(path_env);
+    char *path_copy = _strdup(path_env);
     char *path_dir = NULL;
     char *full_path = malloc(_strlen(input) + 20);
     if (full_path == NULL)
@@ -36,7 +36,7 @@ char *pathfinder(char *input)
 
         if (access(full_path, F_OK) == 0)
 	{
-	    full = strdup(full_path);
+	    full = _strdup(full_path);
             free(path_copy);
             free(full_path);
             return (full);
@@ -100,7 +100,7 @@ if (isatty(STDIN_FILENO))
                 if (full_path != NULL)
 		{
 			argv[0] = NULL;
-			argv[0] = strdup(full_path);
+			argv[0] = _strdup(full_path);
 			full_path = NULL;
 			free(full);
 		}

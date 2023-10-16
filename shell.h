@@ -24,6 +24,7 @@ int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, const char *src);
 int _strcmp(char *s1, char *s2);
+char *_strdup(char *s);
 
 /*PRINT.C*/
 void print_env(void);

@@ -70,3 +70,20 @@ int _strcmp(char *s1, char *s2)
 
 	return (0);
 }
+char *_strdup(char *s)
+{
+size_t len = _strlen(s);
+char *dupped = (char *)malloc(len + 1);
+        if (s == NULL)
+	{
+		free(dupped);
+		return (NULL); 
+	}
+if (dupped == NULL)
+	{
+	perror("strdup malloc error");
+	exit(EXIT_FAILURE);
+	}
+	_strcpy(dupped, s);
+	return (dupped);
+}
