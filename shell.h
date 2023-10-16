@@ -12,11 +12,14 @@
 #include <errno.h>
 extern char **environ;
 #include <limits.h>
-
+#define TRUE 1
+#define FALSE 0
 
 /*SHELL.C*/
 void execute(char **exe);
-void sigint_handler(int signum);
 char *pathfinder(char *input);
+
+
+/*PRINT.C*/
 void print_env(void);
 #endif /*SHELL_H*/

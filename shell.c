@@ -1,6 +1,6 @@
 #include "shell.h"
 
-char *input = NULL, *full = NULL;
+char *input = "", *full = NULL;
 
 /**
  * pathfinder - a Nissan 4x4 truck, joking it looks for the path
@@ -13,7 +13,7 @@ char *pathfinder(char *input)
     char *path_copy = strdup(path_env);
     char *path_dir = NULL;
     char *full_path = malloc(PATH_MAX);
-            if (full_path == NULL)
+    if (full_path == NULL)
         {
             perror("malloc fullpath error");
             exit(EXIT_FAILURE);
@@ -29,7 +29,6 @@ char *pathfinder(char *input)
     path_dir = strtok(path_copy, ":");
     while (path_dir)
     {
-
         full_path[0] = '\0';
         strcpy(full_path, path_dir);
         strcat(full_path, "/");
@@ -37,15 +36,15 @@ char *pathfinder(char *input)
 
         if (access(full_path, F_OK) == 0)
         {
-	full = strdup(full_path);
+        full = strdup(full_path);
             free(path_copy);
-	    free(full_path);
-	    return (full);
+            free(full_path);
+            return (full);
         }
 
         path_dir = strtok(NULL, ":");
     }
-	free(full_path);
+        free(full_path);
     free(path_copy);
     return (NULL);
 }
@@ -65,75 +64,73 @@ pid_t child;
 while (1)
 {
 if (isatty(STDIN_FILENO))
-	{
-		write(STDOUT_FILENO, "$ ", 2);
-	}
-		gtln = getline(&input, &n, stdin);
-		if (gtln == -1 || strcmp(input, "exit\n") == 0)
-			{
-				argv[0] = NULL;
-				break;
-			}
-		if (strcmp(input, "env\n") == 0)
+        {
+                write(STDOUT_FILENO, "$ ", 2);
+        }
+                gtln = getline(&input, &n, stdin);
+                if (gtln == -1 || strcmp(input, "exit\n") == 0)
+                        {
+                                argv[0] = NULL;
+                                break;
+                        }
+                if (strcmp(input, "env\n") == 0)
+                {
+                        print_env();
+                        continue;
+                }
+                if (gtln > 0 && input[gtln - 1] == '\n')
+                        {
+                                input[gtln - 1] = '\0';
+                        }
+		i = 0;
+                tknptr = strtok(input, " ");
+                while (tknptr != NULL)
+                        {
+                                argv[i] = tknptr;
+                                tknptr = strtok(NULL, " ");
+                                i++;
+                        }
+                argv[i] = NULL;
+                if (argv[0] == NULL || strcmp(argv[0], "\t") == 0)
+                {
+                        continue;
+                }
+                full_path = pathfinder(argv[0]);
+                if (full_path != NULL)
 		{
-			print_env();
-			continue;
-		}
-		if (gtln > 0 && input[gtln - 1] == '\n')
-			{
-				input[gtln - 1] = '\0';
-			}
-		tknptr = strtok(input, " ");
-		while (tknptr != NULL)
-			{
-				argv[i] = tknptr;
-				tknptr = strtok(NULL, " ");
-				i++;
-			}
-		argv[i] = NULL;
-		full_path = pathfinder(argv[0]);
-		if (full_path != NULL)
-		{
-			for ( i = 0; argv[i] != NULL; i++)
-			{
-			argv[i] = NULL;
-			free(argv[i]);
-			}
 			argv[0] = strdup(full_path);
 			full_path = NULL;
-			free(full);
-		}
-		child = fork();
-		if (child == -1)
-		{
-			perror("fork");
-			exit(EXIT_FAILURE);
-		}
-		else
-			if (child == 0)
-			{
-			execute(argv);
-			exit(0);
-			}
-			else
-			{
-				waitpid(child, &status, WUNTRACED);
-			}
-		for (j = 0; argv[j] != NULL; j++)
-		{
-			if (argv[j] != input)
-			{
-				free(argv[j]);
-			}
-			argv[j] = NULL;
-		}
-		i = 0;
+                        free(full);
+                }
+                child = fork();
+                if (child == -1)
+                {
+                        perror("fork");
+                        exit(EXIT_FAILURE);
+                }
+                else
+                        if (child == 0)
+                        {
+                        execute(argv);
+                        exit(0);
+                        }
+                        else
+                        {
+                                waitpid(child, &status, WUNTRACED);
+                        }
+                for (j = 0; argv[j] != NULL; j++)
+                {
+                        argv[j] = NULL;
+                }
+                i = 0;
 }
 free(full_path);
+free(argv[0]);
+free(argv[1]);
 for (k = 0; argv[k] != NULL; i++)
-	{
-	free(argv[k]);
-	}
+        {
+        free(&argv[k]);
+        }
 free(input);
 return (EXIT_SUCCESS);
 }
@@ -143,27 +140,14 @@ return (EXIT_SUCCESS);
  */
 void execute(char **exe)
 {
-	int i = 0;
-	if (execve(exe[0], exe, environ) == -1)
-	{
-		perror(exe[0]);
-		for (i = 0; exe[i] != NULL; i++)
-		{
-		free(exe[i]);
-		}
-		exit(EXIT_FAILURE);
-	}
+        int i = 0;
+        if (execve(exe[0], exe, NULL) == -1)
+        {
+                perror(exe[0]);
+                for (i = 0; exe[i] != NULL; i++)
+                {
+                free(exe[i]);
+                }
+                exit(EXIT_FAILURE);
+        }
 }
-/**
- * print_env - prints env after the condition
- */
-void print_env(void)
-{
-	    char **env = environ;
-
-    while (*env != NULL) {
-        puts(*env);
-        env++;
-    }
-}
-
