@@ -51,16 +51,5 @@ int main() {
     
     char copyString[100];
     stringCopy(copyString, string1);
-    printf("String Copy: %s\n", copyString);
-    
-    stringConcat(string1, string2);
-    printf("String Concatenation: %s\n", string1);
-    
-    int compareResult = stringCompare(string1, "Hello, world!");
-    printf("String Comparison: %d\n", compareResult);
-    
-    stringReverse(string1);
-    printf("String Reverse: %s\n", string1);
-    
-    return 0;
+    printf("String C;
 }}}
