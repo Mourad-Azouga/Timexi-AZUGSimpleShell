@@ -8,4 +8,12 @@ int stringLength(const char *str) {
         length++;
     }
     return length;
-}
+// Function to copy a string from source to destination
+void stringCopy(char *dest, const char *src) {
+    int i = 0;
+    while (src[i] != '\0') {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
+}}
