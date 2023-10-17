@@ -1,0 +1,46 @@
+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
+ https://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.github.com/StephanSerwaa/alx-pre_course.git
+https://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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
+Cloning into 'alx-pre_course'...
+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
+$ ./1-alphabet
+abcdefghijklmnopqrstuvwxyz
+$
+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
+
+$ ./2-print_alphabet_x10
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+$ gcc _putchar.c 4-main.c 4-isalpha.c -o 4-isalpha
+$ ./4-isalpha
+1110
+$
+$ gcc _putchar.c 6-main.c 6-abs.c -o 6-abs
+$ ./6-abs
+1
+0
+1
+98
+$
+
+$ gcc _putchar.c 8-main.c 8-24_hours.c -o 8-24
+$ ./8-24 | head
+00:00
+00:01
+00:02
+00:03
+00:04
+00:05
+00:06
+00:07
+00:08
+00:09
+$ ./8-24 | tail
+23$ ./8-24 | wc -l
+1440
