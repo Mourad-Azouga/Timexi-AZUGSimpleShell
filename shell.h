@@ -30,4 +30,8 @@ char *_strdup(char *s);
 void print_env(void);
 int _putchar(int c);
 void _puts(char *str);
+
+/*GETENV.C*/
+char *_getenv(const char *name);
+
 #endif /*SHELL_H*/

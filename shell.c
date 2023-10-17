@@ -1,6 +1,5 @@
 #include "shell.h"
 
-char *input = "", *full = NULL;
 
 /**
  * pathfinder - a Nissan 4x4 truck, joking it looks for the path
@@ -9,17 +8,15 @@ char *input = "", *full = NULL;
  */
 char *pathfinder(char *input)
 {
-    char *path_env = getenv("PATH");
+    char *path_env = _getenv("PATH");
     char *path_copy = _strdup(path_env);
-    char *path_dir = NULL;
+    char *path_dir = NULL, *full = NULL;
     char *full_path = malloc(_strlen(input) + 20);
     if (full_path == NULL)
         {
             perror("malloc fullpath error");
             exit(EXIT_FAILURE);
         }
-
-
     if (path_copy == NULL)
     {
         perror("strdup error");
@@ -39,8 +36,7 @@ char *pathfinder(char *input)
 	    full = _strdup(full_path);
             free(path_copy);
             free(full_path);
-            return (full);
-
+	    return (full);
         }
 
         path_dir = strtok(NULL, ":");
@@ -56,10 +52,10 @@ char *pathfinder(char *input)
  */
 int main(void)
 {
-char *tknptr, *argv[5], *full_path = NULL;
+char *tknptr, *argv[5], *full_path = NULL, *input = NULL;
 size_t n = 0;
 ssize_t gtln;
-int i = 0, status = 0, j = 0, k = 0;
+int i = 0, status = 0;
 pid_t child;
 
 while (1)
@@ -99,12 +95,15 @@ if (isatty(STDIN_FILENO))
                 full_path = pathfinder(argv[0]);
                 if (full_path != NULL)
 		{
-			argv[0] = NULL;
 			argv[0] = _strdup(full_path);
 			full_path = NULL;
-			free(full);
 		}
-                child = fork();
+		else
+		{
+			perror(argv[0]);
+			continue;
+		}
+		child = fork();
                 if (child == -1)
                 {
                         perror("fork");
@@ -120,16 +119,8 @@ if (isatty(STDIN_FILENO))
                         {
                                 waitpid(child, &status, WUNTRACED);
 			}
-                for (j = 0; argv[j] != NULL; j++)
-                {
-                        argv[j] = NULL;
-                }
-                i = 0;
+                free(argv[0]);
 }
-for (k = 0; argv[k] != NULL; i++)
-        {
-        free(&argv[k]);
-        }
 free(input);
 return (EXIT_SUCCESS);
 }
@@ -139,14 +130,8 @@ return (EXIT_SUCCESS);
  */
 void execute(char **exe)
 {
-        int i = 0;
         if (execve(exe[0], exe, NULL) == -1)
         {
-                perror(exe[0]);
-                for (i = 0; exe[i] != NULL; i++)
-                {
-                free(exe[i]);
-                }
                 exit(EXIT_FAILURE);
         }
 }
