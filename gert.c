@@ -73,25 +73,7 @@ void print_times_table(int n)
 				{
 					_putchar(',');
 					_putchar(' ');
-					_putchar((k / 100) + '0');
-					_putchar(((k / 10) % 10) + '0');
-					_putchar((k % 10) + '0');
-				}
-			}
-			_putchar('\n');
-		}
-	}
-}
-
-
-101-natural.c
-
-/*
- * File: 101-natural.c
- * Auth: vincent kip
- */
-
-#include shell.h
+					_putchar((k / hell.h
 
 /**
  * main - Lists all the natural numbers below 1024 (excluded)
