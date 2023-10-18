@@ -134,7 +134,7 @@ return (EXIT_SUCCESS);
  */
 void execute(char **exe)
 {
-        if (execve(exe[0], exe, NULL) == -1)
+        if (execve(exe[0], exe, environ) == -1)
         {
                 exit(EXIT_FAILURE);
         }
