@@ -12,6 +12,7 @@ char *pathfinder(char *input)
     char *path_copy = _strdup(path_env);
     char *path_dir = NULL, *full = NULL;
     char *full_path = malloc(_strlen(input) + 20);
+    
     if (full_path == NULL)
         {
             perror("malloc fullpath error");
@@ -22,7 +23,6 @@ char *pathfinder(char *input)
         perror("strdup error");
         exit(EXIT_FAILURE);
     }
-
     path_dir = strtok(path_copy, ":");
     while (path_dir)
     {
@@ -130,7 +130,7 @@ return (EXIT_SUCCESS);
  */
 void execute(char **exe)
 {
-        if (execve(exe[0], exe, NULL) == -1)
+        if (execve(exe[0], exe, environ) == -1)
         {
                 exit(EXIT_FAILURE);
         }
