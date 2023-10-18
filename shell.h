@@ -16,7 +16,7 @@ extern char **environ;
 #define FALSE 0
 
 /*SHELL.C*/
-void execute(char **exe);
+void execute(char **exe, char **envv);
 char *pathfinder(char *input);
 
 /*STRING.c*/

@@ -116,7 +116,7 @@ if (isatty(STDIN_FILENO))
                 else
                         if (child == 0)
                         {
-                        execute(argv);
+			execute(argv, environ);
                         exit(0);
                         }
                         else
@@ -132,9 +132,9 @@ return (EXIT_SUCCESS);
  * execute - executes the argv from main
  * @exe: the executable command
  */
-void execute(char **exe)
+void execute(char **exe, char **envv)
 {
-        if (execve(exe[0], exe, environ) == -1)
+        if (execve(exe[0], exe, envv) == -1)
         {
                 exit(EXIT_FAILURE);
         }
