@@ -7,6 +7,7 @@
 int _strlen(char *s)
 {
 	int length = 0;
+
 	if (!s)
 	return (length);
 	for (length = 0; s[length]; length++)
@@ -72,12 +73,13 @@ int _strcmp(char *s1, char *s2)
 }
 char *_strdup(char *s)
 {
-size_t len = _strlen(s);
-char *dupped = (char *)malloc(len + 1);
-        if (s == NULL)
+	size_t len = _strlen(s);
+	char *dupped = (char *)malloc(len + 1);
+
+	if (s == NULL)
 	{
 		free(dupped);
-		return (NULL); 
+		return (NULL);
 	}
 if (dupped == NULL)
 	{
