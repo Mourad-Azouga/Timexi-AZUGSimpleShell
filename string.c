@@ -71,6 +71,11 @@ int _strcmp(char *s1, char *s2)
 
 	return (0);
 }
+/**
+ * _strdup - duplicates string
+ * @s: character to be dupped
+ * Return: dupped
+ */
 char *_strdup(char *s)
 {
 	size_t len = _strlen(s);
