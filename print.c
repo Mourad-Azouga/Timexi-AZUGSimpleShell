@@ -5,12 +5,12 @@
  */
 void print_env(void)
 {
-char **env = environ;
+	char **env = environ;
 
-while (*env != NULL)
+	while (*env != NULL)
 	{
-	_puts(*env);
-	env++;
+		_puts(*env);
+		env++;
 	}
 }
 /**

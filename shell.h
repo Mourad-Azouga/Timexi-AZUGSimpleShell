@@ -18,6 +18,7 @@ extern char **environ;
 /*SHELL.C*/
 void execute(char **exe, char **envv);
 char *pathfinder(char *input);
+void forky(char **arg, char **ennv);
 
 /*STRING.c*/
 int _strlen(char *s);
