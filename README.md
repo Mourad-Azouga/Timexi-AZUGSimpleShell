@@ -25,7 +25,7 @@
 
 ## Description
 
-This is a custom shell (hsh) project developed as part of the Holberton School curriculum. The goal of this project is to create a simple Unix shell that mimics the basic functionality of the `/bin/sh` shell. The project involves designing and implementing various shell features, system calls, and functions.
+This is a custom shell (hsh) project developed as part of the ALX School curriculum. The goal of this project is to create a simple Unix shell that mimics the basic functionality of the `/bin/sh` shell. The project involves designing and implementing various shell features, system calls, and functions.
 
 ---
 
