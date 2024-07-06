@@ -1,14 +1,3 @@
-
- _______  _______           _______   
-(  ___  )/ ___   )|\     /|(  ____ \  
-| (   ) |\/   )  || )   ( || (    \/  
-| (___) |    /   )| |   | || |        
-|  ___  |   /   / | |   | || | ____   
-| (   ) |  /   /  | |   | || | \_  )  
-| )   ( | /   (_/\| (___) || (___) |  
-|/     \|(_______/(_______)(_______)  
-                                      
-
 ![AZUG__1_-removebg-preview](https://github.com/Mourad-Azouga/simple_shell/assets/130150919/956af586-2f4b-42ad-bbf5-34370625ae27)
 # PROJECT AZUG - Simple shell for ALX SE projects
 
