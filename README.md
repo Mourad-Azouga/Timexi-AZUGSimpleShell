@@ -69,7 +69,7 @@ To use this custom shell (hsh), follow these instructions:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/hsh.git
+   git clone https://github.com/Mourad-Azouga/Timexi-AZUGSimpleShell
 2. Navigate to the project directory:
     ```bash
     gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
